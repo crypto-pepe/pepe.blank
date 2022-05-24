@@ -365,6 +365,7 @@ a {
 @media (min-width: 768px) {
   body {
     background-position: top 80% right -120px;
+    overflow: auto;
   }
 
   .union {

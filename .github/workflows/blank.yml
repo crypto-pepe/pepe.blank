@@ -32,3 +32,13 @@ jobs:
           protocol: https
           timeout: 180000
           verbose: true
+
+      - name: Update CloudFlare DNS with new IPFS hash
+        env:
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          RECORD_DOMAIN: 'blank.pepe.team'
+          RECORD_NAME: '_dnslink'
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID_PEPE }}
+        uses: textileio/cloudflare-update-dnslink@v2
+        with:
+          cid: ${{ steps.ipfs.outputs.hash }}

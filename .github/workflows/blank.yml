@@ -27,7 +27,7 @@ jobs:
 
 
       - name: Pin to node
-        uses: aquiladev/ipfs-action@v0.2.1
+        uses: aquiladev/ipfs-action@v0.2.0
         id: ipfs
         with:
           path: .

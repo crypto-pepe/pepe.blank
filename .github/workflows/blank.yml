@@ -22,6 +22,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - run: |
+          ls -la
+
+
       - name: Pin to node
         uses: aquiladev/ipfs-action@v0.1.3
         id: ipfs

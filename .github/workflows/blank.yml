@@ -30,10 +30,11 @@ jobs:
         uses: aquiladev/ipfs-action@v0.1.3
         id: ipfs
         with:
-          path: ./pepe.blank
+          path: .
           host: ipfs-aws-fr-1.pepe-team.tech
           port: 443
           protocol: https
+          key: blank.pepe.team
           timeout: 180000
           verbose: true
 

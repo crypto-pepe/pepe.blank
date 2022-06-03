@@ -72,6 +72,7 @@ body {
   background-color: var(--primary);
   background-image: url("../img/coins_mobile.webp");
   background-repeat: no-repeat;
+  -webkit-background-size: 550px;
   background-size: 550px;
   background-position: top 80% right -190px;
   font-family: "PepeFont", sans-serif;
@@ -238,6 +239,7 @@ a {
 
 @media (min-width: 320px) and (max-height: 667px) {
   body {
+    -webkit-background-size: 550px;
     background-size: 550px;
     background-position: top 80% right -300px;
   }
@@ -251,6 +253,7 @@ a {
 
 @media (min-width: 500px) {
   body {
+    -webkit-background-size: 900px;
     background-size: 900px;
     background-position: top 73% right -300px;
   }
@@ -305,12 +308,14 @@ a {
 }
 @media (min-width: 500px) and (max-height: 970px) {
   body {
+    -webkit-background-size: 750px;
     background-size: 750px;
     background-position: top 80% right -250px;
   }
 }
 @media (min-width: 500px) and (max-height: 970px) {
   body {
+    -webkit-background-size: 650px;
     background-size: 650px;
     background-position: top 80% right -300px;
   }
@@ -323,6 +328,7 @@ a {
 
 @media (min-width: 627px) {
   body {
+    -webkit-background-size: 900px;
     background-size: 900px;
     background-position: top 72% right -200px;
   }
@@ -363,6 +369,7 @@ a {
 
 @media (min-width: 627px) and (max-height: 1150px) {
   body {
+    -webkit-background-size: 750px;
     background-size: 750px;
     background-position: top 78% right -80px;
   }
@@ -428,6 +435,7 @@ a {
 
 @media (min-width: 768px) and (max-height: 845px) {
   body {
+    -webkit-background-size: 620px;
     background-size: 620px;
     background-position: top 85% right -300px;
   }
@@ -436,6 +444,7 @@ a {
 @media (min-width: 955px) {
   body {
     background-image: url("../img/coins.webp");
+    -webkit-background-size: 750px;
     background-size: 750px;
     background-position: top 80% right -242px;
   }
@@ -477,6 +486,7 @@ a {
 
 @media (min-width: 955px) and (min-height: 900px) {
   body {
+    -webkit-background-size: 750px;
     background-size: 750px;
     background-position: top 80% right -120px;
   }
@@ -484,6 +494,7 @@ a {
 
 @media (min-width: 955px) and (min-height: 993px) {
   body {
+    -webkit-background-size: 800px;
     background-size: 800px;
     background-position: top 80% right -120px;
   }
@@ -504,6 +515,7 @@ a {
 
 @media (min-width: 1289px) {
   body {
+    -webkit-background-size: 50%;
     background-size: 50%;
     background-position: top 80% right -15%;
   }

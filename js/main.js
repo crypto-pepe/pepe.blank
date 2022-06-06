@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gameWindowBackground.addEventListener("click", () => {
     const game = document.querySelector(".game");
     game.classList.remove("game-opened");
+    currentstate = null;
   });
 
   openGameButton.addEventListener("click", () => {
@@ -58,6 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //sounds
   var volume = 15;
+  /**
+   * @var {HTMLAudioElement} soundJump
+   */
   var soundJump = new buzz.sound("../img/assets/sounds/sfx_wing.ogg");
   var soundScore = new buzz.sound("../img/assets/sounds/sfx_point.ogg");
   var soundHit = new buzz.sound("../img/assets/sounds/sfx_hit.ogg");
@@ -118,11 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startGame() {
     currentstate = states.GameScreen;
-    // const gameBackground = document.querySelector(".game-background");
-    // gameBackground.removeEventListener("click", () => {
-    //   const game = document.querySelector(".game");
-    //   game.classList.remove("game-opened");
-    // });
 
     //fade out the splash
     $("#splash").stop();
@@ -237,22 +236,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  //Handle space bar
-  $(document).keydown(function (e) {
-    //space bar!
-    if (e.keyCode == 32) {
-      //in ScoreScreen, hitting space should click the "replay" button. else it's just a regular spacebar hit
-      if (currentstate == states.ScoreScreen) $("#replay").click();
-      else screenClick();
-    }
-  });
-
   //Handle mouse down OR touch start
   if ("ontouchstart" in gameContainer)
     gameContainer.on("touchstart", screenClick);
   else gameContainer.on("mousedown", screenClick);
 
   function screenClick() {
+    console.log("a");
     if (currentstate == states.GameScreen) {
       playerJump();
     } else if (currentstate == states.SplashScreen) {

@@ -10,6 +10,7 @@
   font-weight: 300;
   src: url("../fonts/pepe-Regular.woff2") format("woff2"),
     url("../fonts/pepe-Regular.woff") format("woff");
+  font-display: swap;
 }
 
 @-webkit-keyframes logo {
@@ -75,7 +76,7 @@ body {
   -webkit-background-size: 550px;
   background-size: 550px;
   background-position: top 80% right -190px;
-  font-family: "PepeFont", sans-serif;
+  font-family: "PepeFont", "Arial", sans-serif;
   overflow: auto;
 }
 

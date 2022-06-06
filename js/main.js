@@ -242,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
   else gameContainer.on("mousedown", screenClick);
 
   function screenClick() {
-    console.log("a");
     if (currentstate == states.GameScreen) {
       playerJump();
     } else if (currentstate == states.SplashScreen) {

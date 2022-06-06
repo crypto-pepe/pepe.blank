@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1-alpine
 COPY fonts /usr/share/nginx/html/fonts
 COPY img /usr/share/nginx/html/img
 COPY js /usr/share/nginx/html/js

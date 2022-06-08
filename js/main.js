@@ -79,11 +79,10 @@ let scoreBoardAnimationTimer;
 
 function getCookie(cname) {
   const name = cname + "=";
-  const ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i].trim();
+  document.cookie.split(";").forEach((ca) => {
+    c = ca.trim();
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  }
+  });
   return "";
 }
 
@@ -262,26 +261,28 @@ function setBigScore(erase) {
   const bigScoreElementChild = Array.prototype.slice.call(
     bigScoreElement.childNodes
   );
-
-  bigScoreElementChild.forEach((child) => bigScoreElement.removeChild(child));
+  bigScoreElementChild.forEach((child) => {
+    bigScoreElement.removeChild(child);
+  });
 
   if (erase) {
     return;
   }
 
-  const digits = score.toString().split("");
-  for (let i = 0; i < digits.length; i++) {
-    const bigScoreImageElement = document.createElement("img");
-    bigScoreImageElement.src = `../img/assets/font_big_${digits[i]}.png`;
-    bigScoreImageElement.alt = `${digits[i]}`;
+  score
+    .toString()
+    .split("")
+    .forEach((digit) => {
+      const bigScoreImageElement = document.createElement("img");
+      bigScoreImageElement.src = `../img/assets/font_big_${digit}.png`;
+      bigScoreImageElement.alt = `${digit}`;
 
-    bigScoreElement.append(bigScoreImageElement);
-  }
+      bigScoreElement.append(bigScoreImageElement);
+    });
 }
 
 function setSmallScore() {
   const currentScoreElement = document.querySelector("#currentscore");
-  const currentScoreImageElement = document.createElement("img");
   const currentScoreElementChild = Array.prototype.slice.call(
     currentScoreElement.childNodes
   );
@@ -290,29 +291,34 @@ function setSmallScore() {
     currentScoreElement.removeChild(child)
   );
 
-  const digits = score.toString().split("");
-  for (let i = 0; i < digits.length; i++) {
-    currentScoreImageElement.src = `../img/assets/font_small_${digits[i]}.png`;
-    currentScoreImageElement.alt = `${digits[i]}`;
-    currentScoreElement.append(currentScoreImageElement);
-  }
+  score
+    .toString()
+    .split("")
+    .forEach((digit) => {
+      const currentScoreImageElement = document.createElement("img");
+      currentScoreImageElement.src = `../img/assets/font_small_${digit}.png`;
+      currentScoreImageElement.alt = `${digit}`;
+      currentScoreElement.append(currentScoreImageElement);
+    });
 }
 
 function setHighScore() {
   const highScoreElement = document.querySelector("#highscore");
-  const highScoreImageElement = document.createElement("img");
   const highScoreElementChild = Array.prototype.slice.call(
     highScoreElement.childNodes
   );
 
   highScoreElementChild.forEach((child) => highScoreElement.removeChild(child));
 
-  const digits = score.toString().split("");
-  for (let i = 0; i < digits.length; i++) {
-    highScoreImageElement.src = `../img/assets/font_small_${digits[i]}.png`;
-    highScoreImageElement.alt = `${digits[i]}`;
-    highScoreElement.append(highScoreImageElement);
-  }
+  score
+    .toString()
+    .split("")
+    .forEach((digit) => {
+      const highScoreImageElement = document.createElement("img");
+      highScoreImageElement.src = `../img/assets/font_small_${digit}.png`;
+      highScoreImageElement.alt = `${digit}`;
+      highScoreElement.append(highScoreImageElement);
+    });
 }
 
 function setMedal() {

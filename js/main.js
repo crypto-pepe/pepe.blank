@@ -35,7 +35,7 @@ let rotation = 0;
 let score = 0;
 let highscore = 0;
 
-const pipeheight = 300;
+const pipeheight = 100;
 const pipewidth = 52;
 let pipes = new Array();
 
@@ -245,7 +245,6 @@ function setBigScore(erase) {
   const bigScoreElementChild = Array.prototype.slice.call(
     bigScoreElement.childNodes
   );
-  console.log(bigScoreElementChild);
 
   bigScoreElementChild.forEach((child) => bigScoreElement.removeChild(child));
 

@@ -20,8 +20,8 @@
   <title>PepeTeam site blank</title>
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
   <link rel="stylesheet" href="./style/reset.css">
+  <link rel="stylesheet" href="./style/game.css">
   <link rel="stylesheet" href="./style/main.css">
-  <link rel="stylesheet" href="./style/style.css">
 
 </head>
 
@@ -60,11 +60,11 @@
 
               <div id="splash"></div>
 
-              <div id="scoreboard">
-                <div id="medal"></div>
+              <div id="scoreboard" class="score-board">
+                <div id="medal" class="medal"></div>
                 <div id="currentscore"></div>
                 <div id="highscore"></div>
-                <div id="replay"><img src="./img/assets/replay.png" alt="replay"></div>
+                <div id="replay" class="replay"><img src="./img/assets/replay.png" alt="replay"></div>
               </div>
 
               <!-- Pipes go here! -->
@@ -111,10 +111,7 @@
     </ul>
   </footer>
 
-  <script defer src="./js/jquery.min.js"></script>
-  <script defer src="./js/jquery.transit.min.js"></script>
-  <script defer src="./js/buzz.min.js"></script>
-  <script defer src="./js/main.js"></script>
+  <script defer context="module" src="./js/main.js"></script>
 
   <script defer>
     document.querySelector('.game-btn').addEventListener('click', () => {

@@ -18,16 +18,16 @@
 const openGameButton = document.querySelector(".game-btn");
 const gameWindowBackground = document.querySelector(".game-background");
 const gameContainerElement = document.querySelector("#gamecontainer");
-const animatedElements = document.querySelectorAll(".animated");
+const scoreBoardElement = document.querySelector("#scoreboard");
+const gameElement = document.querySelector(".game");
+const playerElement = document.querySelector("#player");
+const medalElement = document.querySelector("#medal");
 
 gameWindowBackground.addEventListener("click", () => {
-  const gameElement = document.querySelector(".game");
   gameElement.classList.remove("game-opened");
 });
 
 openGameButton.addEventListener("click", () => {
-  const gameElement = document.querySelector(".game");
-  const scoreBoardElement = document.querySelector("#scoreboard");
   gameElement.classList.add("game-opened");
   scoreBoardElement.style.display = "none";
   showSplash();
@@ -94,13 +94,16 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 function showSplash() {
-  clearTimeout(scoreBoardAnimationTimer);
-
-  const playerElement = document.querySelector("#player");
+  const replayElement = document.querySelector("#replay");
   const pipeElements = document.querySelectorAll(".pipe");
   const splashElement = document.querySelector("#splash");
-  const medalElement = document.querySelector("#medal");
+  const animatedElements = document.querySelectorAll(".animated");
+
   medalElement.classList.add("medal-scale");
+
+  scoreBoardElement.style.display = "none";
+  replayElement.classList.remove("replay-show");
+  scoreBoardElement.classList.remove("score-board-show", "score-board-hide");
 
   currentstate = states.SplashScreen;
 
@@ -164,7 +167,6 @@ function updatePlayer(player) {
 }
 
 function gameloop() {
-  const playerElement = document.querySelector("#player");
   const landElement = document.querySelector("#land");
   const ceilingElement = document.querySelector("#ceiling");
 
@@ -322,7 +324,6 @@ function setHighScore() {
 }
 
 function setMedal() {
-  const medalElement = document.querySelector("#medal");
   const medalImageElement = document.createElement("img");
   const medalElementChild = Array.prototype.slice.call(medalElement.childNodes);
   medalElementChild.forEach((child) => medalElement.removeChild(child));
@@ -345,11 +346,10 @@ function setMedal() {
 }
 
 function playerDead() {
-  const scoreBoardElement = document.querySelector("#scoreboard");
-  const playerElement = document.querySelector("#player");
   const flyAreaElement = document.querySelector("#flyarea");
   const playerElementBox = playerElement.getBoundingClientRect();
   const flyAreaElementBox = flyAreaElement.getBoundingClientRect();
+  const animatedElements = document.querySelectorAll(".animated");
 
   //stop animating everything!
   animatedElements.forEach((animatedElement) => {
@@ -357,12 +357,13 @@ function playerDead() {
   });
 
   //drop the bird to the floor
-  const playerBottom = playerElementBox.top + playerElementBox.width; //we use width because he'll be rotated 90 deg
+  const playerBottom = playerElementBox.top - flyAreaElementBox.top + 34; //we use width because he'll be rotated 90 deg
   const floor = flyAreaElementBox.height;
   const movey = Math.max(0, floor - playerBottom);
 
   playerElement.style.transition = "transform 1s ease-in-out";
-  playerElement.style.cssText = `transform: translateY(${movey}px) rotate(0deg)`;
+  playerElement.style.top = `${position}px`;
+  playerElement.style.transform = `translateY(${movey}px) rotate(0deg)`;
 
   //it's time to change states. as of now we're considered ScoreScreen to disable left click/flying
   currentstate = states.ScoreScreen;
@@ -386,9 +387,7 @@ function playerDead() {
 function showScore() {
   clearTimeout(soundHitTimer);
 
-  const scoreBoardElement = document.querySelector("#scoreboard");
   const replayElement = document.querySelector("#replay");
-  const medalElement = document.querySelector("#medal");
 
   //unhide us
   scoreBoardElement.classList.add("score-board-show");
@@ -416,6 +415,7 @@ function showScore() {
   soundSwoosh.play();
 
   //show the scoreboard
+  document.querySelector("#replay").removeEventListener("click", some);
 
   scoreBoardAnimationTimer = setTimeout(() => {
     soundSwoosh.pause();
@@ -426,17 +426,16 @@ function showScore() {
     if (wonmedal) {
       medalElement.classList.remove("medal-scale");
     }
+    document.querySelector("#replay").addEventListener("click", some);
+    clearTimeout(scoreBoardAnimationTimer);
   }, 600);
 
   //make the replay button clickable
   replayclickable = true;
 }
 
-document.querySelector("#replay").addEventListener("click", () => {
-  clearTimeout(scoreBoardAnimationTimer);
-
-  const scoreBoardElement = document.querySelector("#scoreboard");
-  const replayElement = document.querySelector("#replay");
+function some() {
+  playerElement.classList.remove("bird-drop");
 
   //make sure we can only click once
   if (!replayclickable) return;
@@ -450,13 +449,10 @@ document.querySelector("#replay").addEventListener("click", () => {
 
   scoreBoardElement.classList.add("score-board-hide");
   scoreBoardAnimationTimer = setTimeout(() => {
-    scoreBoardElement.style.display = "none";
-    replayElement.classList.remove("replay-show");
-    scoreBoardElement.classList.remove("score-board-show", "score-board-hide");
-
     showSplash();
+    clearTimeout(scoreBoardAnimationTimer);
   }, 1000);
-});
+}
 
 function playerScore() {
   score += 1;
@@ -470,7 +466,6 @@ function playerScore() {
 function updatePipes() {
   const pipeElements = document.querySelectorAll(".pipe");
   const flyAreaElement = document.querySelector("#flyarea");
-
   const newPipeElement = document.createElement("div");
   const newPipeUpperElement = document.createElement("div");
   const newPipeLowerElement = document.createElement("div");

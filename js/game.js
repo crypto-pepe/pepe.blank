@@ -415,7 +415,7 @@ function showScore() {
   soundSwoosh.play();
 
   //show the scoreboard
-  document.querySelector("#replay").removeEventListener("click", some);
+  document.querySelector("#replay").removeEventListener("click", handleReplayClick);
 
   scoreBoardAnimationTimer = setTimeout(() => {
     soundSwoosh.pause();
@@ -426,7 +426,7 @@ function showScore() {
     if (wonmedal) {
       medalElement.classList.remove("medal-scale");
     }
-    document.querySelector("#replay").addEventListener("click", some);
+    document.querySelector("#replay").addEventListener("click", handleReplayClick);
     clearTimeout(scoreBoardAnimationTimer);
   }, 600);
 
@@ -434,7 +434,7 @@ function showScore() {
   replayclickable = true;
 }
 
-function some() {
+function handleReplayClick() {
   playerElement.classList.remove("bird-drop");
 
   //make sure we can only click once

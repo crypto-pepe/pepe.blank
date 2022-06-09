@@ -2,26 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Project under construction" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9MXK1J8W0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { window.dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-J9MXK1J8W0');
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-J9MXK1J8W0");
   </script>
 
-  <title>PepeTeam site blank</title>
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-  <link rel="stylesheet" href="./style/reset.css">
-  <link rel="stylesheet" href="./style/main.css">
-  <link rel="stylesheet" href="./style/style.css">
-
+  <title>PepeTeam</title>
+  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+  <link rel="stylesheet" href="./style/reset.css" />
+  <link rel="stylesheet" href="./style/game.css" />
+  <link rel="stylesheet" href="./style/main.css" />
 </head>
 
 <body>
@@ -59,12 +60,13 @@
 
               <div id="splash"></div>
 
-              <div id="scoreboard">
-                <div id="medal"></div>
+              <div id="scoreboard" class="score-board">
+                <div id="medal" class="medal"></div>
                 <div id="currentscore"></div>
                 <div id="highscore"></div>
-                <div id="replay"><img src="./img/assets/replay.png" alt="replay"></div>
+                <div id="replay" class="replay"><img src="./img/assets/replay.png" alt="replay"></div>
               </div>
+
 
               <!-- Pipes go here! -->
             </div>
@@ -74,11 +76,12 @@
           </div>
         </div>
       </div>
+      </div>
       <div class="boundingbox" id="playerbox"></div>
       <div class="boundingbox" id="pipebox"></div>
 
     </section>
-    <button class="game-btn"></button>
+    <button class="game-btn" aria-label="game-btn"></button>
   </main>
   <footer class="footer">
     <ul class="socials__list">
@@ -110,17 +113,14 @@
     </ul>
   </footer>
 
-  <script defer src="./js/jquery.min.js"></script>
-  <script defer src="./js/jquery.transit.min.js"></script>
-  <script defer src="./js/buzz.min.js"></script>
-  <script defer src="./js/main.js"></script>
+  <script defer context="module" src="./js/game.js"></script>
 
   <script defer>
-    document.querySelector('.game-btn').addEventListener('click', () => {
-      gtag('event', 'game_click', {
-        'event_label': 'Start game',
-      })
-    })
+    document.querySelector(".game-btn").addEventListener("click", () => {
+      gtag("event", "game_click", {
+        event_label: "Start game",
+      });
+    });
   </script>
 </body>
 

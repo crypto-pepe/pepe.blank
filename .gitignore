@@ -2,3 +2,6 @@
 *.iml
 .idea
 out
+.DS_Store
+.vercel
+.output

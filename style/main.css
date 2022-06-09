@@ -1,392 +1,566 @@
-/*
-   Copyright 2014 Nebez Briefkani
-   floppybird - main.css
-   
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-*/
-
-@-webkit-keyframes animLand {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -335px 0px; }
-}
-@-moz-keyframes animLand {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -335px 0px; }
-}
-@-o-keyframes animLand {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -335px 0px; }
-}
-@keyframes animLand {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -335px 0px; }
+:root {
+  --primary: #00a575;
+  --secondary: #f6f6f6;
+  --whote: #ffffff;
 }
 
-@-webkit-keyframes animSky {
-   0% { background-position: 0px 100%; }
-   100% { background-position: -275px 100%; }
-}
-@-moz-keyframes animSky {
-   0% { background-position: 0px 100%; }
-   100% { background-position: -275px 100%; }
-}
-@-o-keyframes animSky {
-   0% { background-position: 0px 100%; }
-   100% { background-position: -275px 100%; }
-}
-@keyframes animSky {
-   0% { background-position: 0px 100%; }
-   100% { background-position: -275px 100%; }
+@font-face {
+  font-family: "PepeFont";
+  font-style: 300;
+  font-weight: 300;
+  src: url("../fonts/pepe-Regular.woff2") format("woff2"),
+    url("../fonts/pepe-Regular.woff") format("woff");
+  font-display: swap;
 }
 
-@-webkit-keyframes animBird {
-   from { background-position: 0px 0px; }
-   to { background-position: 0px -96px; }
-}
-@-moz-keyframes animBird {
-   from { background-position: 0px 0px; }
-   to { background-position: 0px -96px; }
-}
-@-o-keyframes animBird {
-   from { background-position: 0px 0px; }
-   to { background-position: 0px -96px; }
-}
-@keyframes animBird {
-   from { background-position: 0px 0px; }
-   to { background-position: 0px -96px; }
-}
-
-@-webkit-keyframes animPipe {
-   0% { left: 900px; }
-   100% { left: -100px; }
-}
-@-moz-keyframes animPipe {
-   0% { left: 900px; }
-   100% { left: -100px; }
-}
-@-o-keyframes animPipe {
-   0% { left: 900px; }
-   100% { left: -100px; }
-}
-@keyframes animPipe {
-   0% { left: 900px; }
-   100% { left: -100px; }
+@-webkit-keyframes logo {
+  0% {
+    stroke-dashoffset: 5856;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 3904;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 1952;
+    opacity: 0;
+  }
 }
 
-@-webkit-keyframes animCeiling {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -63px 0px; }
-}
-@-moz-keyframes animCeiling {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -63px 0px; }
-}
-@-o-keyframes animCeiling {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -63px 0px; }
-}
-@keyframes animCeiling {
-   0% { background-position: 0px 0px; }
-   100% { background-position: -63px 0px; }
-}
-
-
-*,
-*:before,
-*:after
-{
-   /* border box */
-   -moz-box-sizing: border-box;
-   -webkit-box-sizing: border-box;
-   box-sizing: border-box;
-   /* gpu acceleration */
-   -webkit-transition: translate3d(0,0,0);
-   /* select disable */
-   -webkit-touch-callout: none;
-   -webkit-user-select: none;
-   -khtml-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
+@keyframes logo {
+  0% {
+    stroke-dashoffset: 5856;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 3904;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 1952;
+    opacity: 0;
+  }
 }
 
-html,
-body
-{
-   height: 100%;
-   overflow: hidden;
-   font-family: monospace;
-   font-size: 12px;
-   color: #fff;
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#gamecontainer
-{
-   position: relative;
-   width: 100%;
-   height: 100%;
-   min-height: 525px;
-   overflow: hidden;
+body {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  min-width: 320px;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  color: var(--secondary);
+  background-color: var(--primary);
+  background-image: url("../img/coins_mobile.webp");
+  background-repeat: no-repeat;
+  -webkit-background-size: 550px;
+  background-size: 550px;
+  background-position: top 80% right -190px;
+  font-family: "PepeFont", "Arial", sans-serif;
+  overflow: auto;
 }
 
-/*
-Screen - Game
-*/
-#gamescreen
-{
-   position: absolute;
-   width: 100%;
-   height: 100%;
+ul {
+  list-style: none;
 }
 
-#sky
-{
-   position: absolute;
-   top: 0;
-   width: 100%;
-   height: 80%;
-   background-image: url('../img/assets/sky.png');
-   background-repeat: repeat-x;
-   background-position: 0px 100%;
-   background-color: #4ec0ca;
-   
-   -webkit-animation: animSky 7s linear infinite;
-   animation: animSky 7s linear infinite;
+a {
+  text-decoration: none;
 }
 
-#flyarea
-{
-   position: absolute;
-   bottom: 0;
-   height: 420px;
-   width: 100%;
+.container {
+  margin: 0 auto;
+  display: flex;
 }
 
-#ceiling
-{
-   position: absolute;
-   top: -16px;
-   height: 16px;
-   width: 100%;
-   background-image: url('../img/assets/ceiling.png');
-   background-repeat: repeat-x;
-   
-   -webkit-animation: animCeiling 481ms linear infinite;
-   animation: animCeiling 481ms linear infinite;
+.game {
+  display: none;
 }
 
-#land
-{
-   position: absolute;
-   bottom: 0;
-   width: 100%;
-   height: 20%;
-   background-image: url('../img/assets/land.png');
-   background-repeat: repeat-x;
-   background-position: 0px 0px;
-   background-color: #00A575;
-   
-   -webkit-animation: animLand 2516ms linear infinite;
-   animation: animLand 2516ms linear infinite;
+.game-opened {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-#bigscore
-{
-   position: absolute;
-   top: 20px;
-   left: 150px;
-   z-index: 100;
+.game-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-#bigscore img
-{
-   display: inline-block;
-   padding: 1px;
+.game-container {
+  max-width: 500px;
+  max-height: 525px;
+  width: 100%;
+  height: 100%;
 }
 
-#splash
-{
-   position: absolute;
-   opacity: 0;
-   top: 75px;
-   left: 65px;
-   width: 188px;
-   height: 170px;
-   background-image: url('../img/assets/splash.png');
-   background-repeat: no-repeat;
+.game-btn {
+  position: absolute;
+  right: 0;
+  bottom: 20%;
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-#scoreboard
-{
-   position: absolute;
-   display: none;
-   opacity: 0;
-   top: 64px;
-   left: 43px;
-   width: 236px;
-   height: 280px;
-   background-image: url('../img/assets/scoreboard.png');
-   background-repeat: no-repeat;
-   
-   z-index: 1000;
+.game-btn:hover {
+  box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.5);
 }
 
-#medal
-{
-   position: absolute;
-   opacity: 0;
-   top: 114px;
-   left: 32px;
-   width: 44px;
-   height: 44px;
+.union {
+  margin-left: 25px;
+  padding: 50px 0 0 0;
+  display: grid;
+  row-gap: 10px;
+  justify-items: center;
+  width: 100%;
 }
 
-#currentscore
-{
-   position: absolute;
-   top: 105px;
-   left: 107px;
-   width: 104px;
-   height: 14px;
-   text-align: right;
+.union__title {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-size: 25px;
+  line-height: 24px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  transform: rotate(-90deg) translateX(-50%) translateY(-100px);
 }
 
-#currentscore img
-{
-   padding-left: 2px;
+.union__logo {
+  max-width: 150px;
+  display: grid;
+  row-gap: 10px;
 }
 
-#highscore
-{
-   position: absolute;
-   top: 147px;
-   left: 107px;
-   width: 104px;
-   height: 14px;
-   text-align: right;
+.union__logo-img {
+  width: 150px;
+  height: 150px;
 }
 
-#highscore img
-{
-   padding-left: 2px;
+.union__logo-img path {
+  opacity: 1;
+  stroke-dasharray: 1952;
+  -webkit-animation: logo 5s ease-in-out 1s infinite;
+  animation: logo 5s ease-in-out 1s infinite;
 }
 
-#replay
-{
-   position: absolute;
-   opacity: 0;
-   top: 205px;
-   left: 61px;
-   height: 115px;
-   width: 70px;
-   cursor: pointer;
+.union__logo-text {
+  position: relative;
+  display: grid;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
-.boundingbox
-{
-   position: absolute;
-   display: none;
-   top: 0;
-   left: 0;
-   width: 0;
-   height: 0;
-   border: 1px solid red;
+.union__logo-text-main {
+  margin-bottom: 60px;
+  font-size: 62px;
+  line-height: 62px;
+}
+.union__logo-text-sub {
+  position: absolute;
+  top: 52px;
+  right: -42px;
+  font-size: 30px;
+  line-height: 60px;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
-#player
-{
-   left: 60px;
-   top: 200px;
+.footer {
+  margin-bottom: 40px;
 }
 
-.bird
-{
-   position: absolute;
-   width: 34px;
-   height: 24px;
-   background-image: url('../img/assets/bird.png');
-   
-   -webkit-animation: animBird 300ms steps(4) infinite;
-   animation: animBird 300ms steps(4) infinite;
+.socials__list {
+  display: grid;
+  grid-template-columns: repeat(5, min-content);
+  column-gap: 20px;
+  justify-content: center;
 }
 
-.pipe
-{
-   position: absolute;
-   left: -100px;
-   width: 52px;
-   height: 100%;
-   z-index: 10;
-   
-   -webkit-animation: animPipe 7500ms linear;
-   animation: animPipe 7500ms linear;
+.socials__list-item-link {
+  display: block;
+  height: 40px;
+  width: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
-.pipe_upper
-{
-   position: absolute;
-   top: 0;
-   width: 52px;
-   background-image: url('../img/assets/pipe.png');
-   background-repeat: repeat-y;
-   background-position: center;
+.icon-matrix {
+  background-image: url("../img/matrix-icon.svg");
+}
+.icon-medium {
+  background-image: url("../img/medium-icon.svg");
+}
+.icon-twitter {
+  background-image: url("../img/twitter-icon.svg");
+}
+.icon-telegram {
+  background-image: url("../img/telegram-icon.svg");
+}
+.icon-github {
+  background-image: url("../img/github-icon.svg");
 }
 
-.pipe_upper:after
-{
-   content: "";
-   position: absolute;
-   bottom: 0;
-   width: 52px;
-   height: 26px;
-   background-image: url('../img/assets/pipe-down.png');
+@media (min-width: 320px) and (max-height: 667px) {
+  body {
+    -webkit-background-size: 550px;
+    background-size: 550px;
+    background-position: top 80% right -300px;
+  }
 }
 
-.pipe_lower
-{
-   position: absolute;
-   bottom: 0;
-   width: 52px;
-   background-image: url('../img/assets/pipe.png');
-   background-repeat: repeat-y;
-   background-position: center;
+@media (min-width: 320px) and (max-height: 600px) {
+  body {
+    background-image: none;
+  }
 }
 
-.pipe_lower:after
-{
-   content: "";
-   position: absolute;
-   top: 0;
-   width: 52px;
-   height: 26px;
-   background-image: url('../img/assets/pipe-up.png');
+@media (min-width: 500px) {
+  body {
+    -webkit-background-size: 900px;
+    background-size: 900px;
+    background-position: top 73% right -300px;
+  }
+
+  .union {
+    margin-left: 25px;
+    padding: 72px 0 0 0;
+  }
+
+  .union__logo {
+    max-width: 190px;
+    row-gap: 12px;
+  }
+
+  .union__title {
+    top: 50px;
+    left: 70px;
+    font-size: 33px;
+    line-height: 33px;
+    transform: rotate(-90deg) translateX(-50%) translateY(-150px);
+  }
+
+  .union__logo-img {
+    width: 190px;
+    height: 190px;
+  }
+
+  .union__logo-text-main {
+    font-size: 78px;
+    line-height: 78px;
+  }
+
+  .union__logo-text-sub {
+    top: 71px;
+    right: -54px;
+    font-size: 40px;
+  }
+
+  .socials__list {
+    column-gap: 20px;
+  }
+
+  .socials__list-item-link {
+    height: 40px;
+    width: 40px;
+  }
 }
 
-#footer
-{
-   position: absolute;
-   bottom: 3px;
-   left: 3px;
+@media (min-width: 500px) and (max-height: 1150px) {
+  body {
+    background-position: top 80% right -300px;
+  }
+}
+@media (min-width: 500px) and (max-height: 970px) {
+  body {
+    -webkit-background-size: 750px;
+    background-size: 750px;
+    background-position: top 80% right -250px;
+  }
+}
+@media (min-width: 500px) and (max-height: 970px) {
+  body {
+    -webkit-background-size: 650px;
+    background-size: 650px;
+    background-position: top 80% right -300px;
+  }
+}
+@media (min-width: 500px) and (max-height: 830px) {
+  body {
+    background-image: none;
+  }
 }
 
-#footer a,
-#footer a:link,
-#footer a:visited,
-#footer a:hover,
-#footer a:active
-{
-   display: block;
-   padding: 2px;
-   text-decoration: none;
-   color: #fff;
+@media (min-width: 627px) {
+  body {
+    -webkit-background-size: 900px;
+    background-size: 900px;
+    background-position: top 72% right -200px;
+  }
+
+  .union {
+    margin-left: 22px;
+    padding: 90px 0 0 0;
+  }
+
+  .union__logo {
+    max-width: 230px;
+    row-gap: 10px;
+  }
+
+  .union__title {
+    top: 70px;
+    left: 90px;
+    font-size: 39px;
+    line-height: 39px;
+    transform: rotate(-90deg) translateX(-50%) translateY(-170px);
+  }
+
+  .union__logo-img {
+    width: 230px;
+    height: 230px;
+  }
+
+  .union__logo-text-main {
+    font-size: 98px;
+    line-height: 98px;
+  }
+  .union__logo-text-sub {
+    top: 90px;
+    right: -61px;
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 627px) and (max-height: 1150px) {
+  body {
+    -webkit-background-size: 750px;
+    background-size: 750px;
+    background-position: top 78% right -80px;
+  }
+}
+
+@media (min-width: 627px) and (max-height: 1000px) {
+  body {
+    background-position: top 82% right -320px;
+  }
+}
+
+@media (min-width: 627px) and (max-height: 875px) {
+  body {
+    background-position: top 95% right -400px;
+  }
+}
+
+@media (min-width: 627px) and (max-height: 815px) {
+  body {
+    background-image: none;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    background-position: top 80% right -120px;
+    overflow: auto;
+  }
+
+  .union {
+    margin-left: 0px;
+  }
+
+  .union__logo {
+    max-width: 280px;
+  }
+
+  .socials__list {
+    column-gap: 20px;
+  }
+
+  .socials__list-item-link {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 980px) {
+  body {
+    background-position: top 80% right -200px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 930px) {
+  body {
+    background-position: top 85% right -260px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 890px) {
+  body {
+    background-position: top 85% right -320px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 845px) {
+  body {
+    -webkit-background-size: 620px;
+    background-size: 620px;
+    background-position: top 85% right -300px;
+  }
+}
+
+@media (min-width: 955px) {
+  body {
+    background-image: url("../img/coins.webp");
+    -webkit-background-size: 750px;
+    background-size: 750px;
+    background-position: top 80% right -242px;
+  }
+
+  .union {
+    padding: 60px 0 0 0;
+  }
+
+  .union__title {
+    top: 40px;
+    left: 80px;
+  }
+
+  .union__logo-img {
+    width: 230px;
+    height: 230px;
+  }
+
+  .union__logo-text-main {
+    font-size: 98px;
+    line-height: 98px;
+  }
+  .union__logo-text-sub {
+    top: 90px;
+    right: -61px;
+    font-size: 48px;
+  }
+
+  .footer {
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 955px) and (max-height: 830px) {
+  body {
+    background-position: top 85% right -310px;
+  }
+}
+
+@media (min-width: 955px) and (min-height: 900px) {
+  body {
+    -webkit-background-size: 750px;
+    background-size: 750px;
+    background-position: top 80% right -120px;
+  }
+}
+
+@media (min-width: 955px) and (min-height: 993px) {
+  body {
+    -webkit-background-size: 800px;
+    background-size: 800px;
+    background-position: top 80% right -120px;
+  }
+
+  .union {
+    padding: 80px 0 0 0;
+  }
+
+  .union__title {
+    top: 60px;
+    left: 80px;
+  }
+
+  .footer {
+    margin-bottom: 80px;
+  }
+}
+
+@media (min-width: 1289px) {
+  body {
+    -webkit-background-size: 50%;
+    background-size: 50%;
+    background-position: top 80% right -15%;
+  }
+
+  .union__title {
+    font-size: 47px;
+    line-height: 47px;
+  }
+
+  .union__logo {
+    display: grid;
+    row-gap: 5px;
+  }
+
+  .union__logo-img {
+    width: 280px;
+    height: 280px;
+  }
+
+  .union__logo-text {
+    font-weight: 300;
+  }
+
+  .union__logo-text-main {
+    font-size: 120px;
+    line-height: 120px;
+    margin-bottom: 85px;
+  }
+  .union__logo-text-sub {
+    top: 115px;
+    right: -78px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  .socials__list {
+    column-gap: 25px;
+  }
+
+  .socials__list-item-link {
+    height: 50px;
+    width: 50px;
+  }
 }
